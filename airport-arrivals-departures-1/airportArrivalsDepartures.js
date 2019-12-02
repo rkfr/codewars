@@ -3,12 +3,8 @@
 const rotor = {
 	rotorLine: "ABCDEFGHIJKLMNOPQRSTUVWXYZ ?!@#&()|<>.:=-+*/0123456789",
 
-	getIndex(char) {
-		return this.rotorLine.indexOf(char);
-	},
-
 	getFlappedChar(char, flaps = 0) {
-		const charNum = this.getIndex(char);
+		const charNum = this.rotorLine.indexOf(char);
 		const rotorLength = this.rotorLine.length;
 
 		let flappedChar = "";
@@ -25,7 +21,7 @@ const rotor = {
 	},
 
 	flapLine(line, flaps) {
-		return line.split("").map(char => rotor.getFlappedChar(char, flaps));
+		return line.split("").map(char => this.getFlappedChar(char, flaps));
 	}
 };
 
